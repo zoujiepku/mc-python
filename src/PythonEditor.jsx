@@ -56,6 +56,7 @@ export const PythonEditor = ({ initialCode, onRunSuccess }) => {
                 onChange={(e) => setCode(e.target.value)}
                 spellCheck="false"
                 placeholder="Type your Python code here..."
+                rows={Math.max(3, code.split('\n').length + 1)}
             />
             <div className="terminal-output">
                 <div className="terminal-header">Output:</div>

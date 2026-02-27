@@ -3,83 +3,16 @@ import { PythonEditor } from './PythonEditor';
 import { Quiz } from './Quiz';
 import './LessonRenderer.css';
 
-const lessons = [
-    {
-        type: 'info',
-        title: '🪄 The Magic Command Block',
-        content: "Welcome to Python! 🐍 Python is like a magical Command Block. We can give it instructions and it will do them instantly. Let's try telling the computer to say something! ✨",
-        buttonText: "Let's Go! 🏃‍♂️"
-    },
-    {
-        type: 'code',
-        title: 'Your First Spell 📜',
-        content: 'Type the exact words below and hit Run! ⚡\\n\\nprint("Hello, Minecraft!")',
-        initialCode: 'print("Hello, Minecraft!")',
-        expectedOutputPattern: /Hello, Minecraft!/
-    },
-    {
-        type: 'quiz',
-        question: 'What does the print() command do? 🤔',
-        options: [
-            '🟩 Spawns a creeper',
-            '⛏️ Digs a hole',
-            '💬 Tells the computer to display a message on the screen'
-        ],
-        correctAnswerIndex: 2
-    },
-    {
-        type: 'info',
-        title: '🔢 Super Silly Big Numbers!',
-        content: "Python is also a super-fast calculator. 🚀 It can multiply giant numbers faster than you can blink! Let's multiply 99,999,999 by 88,888,888. 🤯",
-        buttonText: "Let's multiply! ✖️"
-    },
-    {
-        type: 'code',
-        title: 'Mega Multiplication 💥',
-        content: 'Try typing this and run it:\\n\\nprint(99999999 * 88888888)',
-        initialCode: 'print(99999999 * 88888888)',
-        expectedOutputPattern: /\d+/
-    },
-    {
-        type: 'info',
-        title: '📦 Storing Blocks (Variables)',
-        content: 'In Minecraft, you carry items in your inventory. 🎒 In Python, we use "Variables" as our inventory slots. We can store numbers in words! 🔠',
-        buttonText: "Show me! 👀"
-    },
-    {
-        type: 'code',
-        title: 'Variable Inventory 💎',
-        content: 'Run this block to see how many treasures we have:\\n\\ndiamonds = 50\\nemerald_blocks = 1000\\nprint("Total treasures:", diamonds + emerald_blocks)',
-        initialCode: 'diamonds = 50\nemerald_blocks = 1000\nprint("Total treasures:", diamonds + emerald_blocks)',
-        expectedOutputPattern: /Total treasures:\s*1050/
-    },
-    {
-        type: 'quiz',
-        question: 'If we write `zombies = 5`, what did we just do? 🧟‍♂️',
-        options: [
-            '✅ Created a variable named `zombies` holding the number 5',
-            '⚔️ Defeated 5 zombies',
-            '🖨️ Printed the word zombies'
-        ],
-        correctAnswerIndex: 0
-    },
-    {
-        type: 'info',
-        title: 'Level Complete! 🏆✨',
-        content: 'You learned about print commands, super big numbers, and variables! You are a Python Wizard now! 🧙‍♂️🪄',
-        buttonText: "Play Again 🔄",
-        isEnd: true
-    }
-];
-
-export const LessonRenderer = () => {
+export const LessonRenderer = ({ chapter, onBack }) => {
+    const lessons = chapter.lessons;
     const [currentStep, setCurrentStep] = useState(0);
     const [stepCompleted, setStepCompleted] = useState(false);
+    const [resetKey, setResetKey] = useState(0);
 
     const nextStep = () => {
         setStepCompleted(false);
         if (lessons[currentStep].isEnd) {
-            setCurrentStep(0);
+            onBack();
         } else {
             setCurrentStep((prev) => prev + 1);
         }
@@ -87,9 +20,24 @@ export const LessonRenderer = () => {
 
     const handleRunSuccess = (output) => {
         const step = lessons[currentStep];
-        if (step.expectedOutputPattern && step.expectedOutputPattern.test(output)) {
-            setStepCompleted(true);
+        if (step.expectedOutputPattern) {
+            const pattern = new RegExp(step.expectedOutputPattern);
+            if (pattern.test(output)) {
+                setStepCompleted(true);
+            }
         }
+    };
+
+    const prevStep = () => {
+        setStepCompleted(false);
+        if (currentStep > 0) {
+            setCurrentStep((prev) => prev - 1);
+        }
+    };
+
+    const resetCode = () => {
+        setStepCompleted(false);
+        setResetKey((k) => k + 1);
     };
 
     const step = lessons[currentStep];
@@ -116,15 +64,19 @@ export const LessonRenderer = () => {
                         <h2 className="lesson-title">{step.title}</h2>
                         <p className="lesson-content">{step.content}</p>
                         <PythonEditor
-                            key={currentStep}
+                            key={`${currentStep}-${resetKey}`}
                             initialCode={step.initialCode}
                             onRunSuccess={handleRunSuccess}
                         />
                         {stepCompleted ? (
-                            <div style={{ textAlign: 'center', marginTop: '20px' }}>
-                                <p style={{ color: '#55ff55', fontWeight: 'bold', fontSize: '20px', marginBottom: '15px', fontFamily: '"Minecraftia", sans-serif' }}>🎉 Great job! The code worked!</p>
-                                <p style={{ color: '#aaaaaa', fontStyle: 'italic', marginBottom: '20px' }}>You can keep editing and experimenting!</p>
-                                <button className="mc-button" onClick={nextStep}>Next Level</button>
+                            <div style={{ textAlign: 'center', marginTop: '8px' }}>
+                                <p style={{ color: '#55ff55', fontWeight: 'bold', fontSize: '16px', marginBottom: '5px', fontFamily: '"Minecraftia", sans-serif' }}>🎉 Great job! The code worked!</p>
+                                <p style={{ color: '#aaaaaa', fontStyle: 'italic', marginBottom: '10px', fontSize: '13px' }}>You can keep editing and experimenting!</p>
+                                <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
+                                    <button className="mc-button" onClick={resetCode}>Try Again 🔄</button>
+                                    <button className="mc-button" onClick={prevStep} disabled={currentStep === 0}>Previous Level ⬅️</button>
+                                    <button className="mc-button" onClick={nextStep}>Next Level ➡️</button>
+                                </div>
                             </div>
                         ) : (
                             <p className="hint-text">Run the correct code to gain XP and advance!</p>
@@ -135,6 +87,7 @@ export const LessonRenderer = () => {
                 {step.type === 'quiz' && (
                     <div className="quiz-section">
                         <Quiz
+                            key={currentStep}
                             question={step.question}
                             options={step.options}
                             correctAnswerIndex={step.correctAnswerIndex}

@@ -55,11 +55,10 @@
 .code-textarea {
   background: #1e1e1e;
   color: #d4d4d4;
-  padding: 20px;
+  padding: 15px;
   font-family: 'Courier New', Courier, monospace;
   font-size: 18px;
   border: none;
-  min-height: 100px;
   resize: vertical;
   outline: none;
   line-height: 1.5;

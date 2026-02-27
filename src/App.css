@@ -10,7 +10,7 @@
   justify-content: center;
   gap: 8px;
   padding: 8px 0;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .logo-icon {
@@ -32,7 +32,55 @@
 
 .subtitle {
   color: #999;
+  font-size: 18px;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  background: var(--mc-stone);
+  color: #ccc;
+  border: 3px solid var(--mc-stone-light);
+  border-bottom-color: var(--mc-stone-dark);
+  border-right-color: var(--mc-stone-dark);
+  padding: 6px 14px;
   font-size: 13px;
+  font-family: 'Minecraftia', sans-serif;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: transform 0.1s, background-color 0.15s;
+}
+
+.nav-btn:hover {
+  background: var(--mc-stone-light);
+  color: white;
+}
+
+.nav-btn:active {
+  transform: translateY(1px);
+}
+
+.nav-btn.nav-active {
+  background: var(--mc-green);
+  border-color: var(--mc-green-light);
+  border-bottom-color: var(--mc-green-dark);
+  border-right-color: var(--mc-green-dark);
+  color: white;
+}
+
+.nav-btn.nav-home {
+  background: var(--mc-wood);
+  border-color: var(--mc-wood-light);
+  border-bottom-color: var(--mc-wood-dark);
+  border-right-color: var(--mc-wood-dark);
+  color: white;
 }
 
 .main-content {

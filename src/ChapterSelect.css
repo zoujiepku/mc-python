@@ -1,0 +1,76 @@
+.chapter-select-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.chapter-select-title {
+    color: #ffaa00;
+    font-family: 'Minecraftia', sans-serif;
+    text-shadow: 2px 2px #000;
+    font-size: 24px;
+    margin: 0 0 5px 0;
+}
+
+.chapter-select-subtitle {
+    color: #ccc;
+    font-size: 16px;
+    margin: 0 0 20px 0;
+}
+
+.chapter-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.chapter-card {
+    background: rgba(40, 40, 40, 0.9);
+    border: 4px solid var(--mc-stone-light);
+    border-bottom-color: var(--mc-stone-dark);
+    border-right-color: var(--mc-stone-dark);
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+.chapter-card:hover {
+    background: rgba(60, 60, 60, 0.9);
+    transform: translateY(-2px);
+}
+
+.chapter-card:active {
+    transform: translateY(1px);
+}
+
+.chapter-emoji {
+    font-size: 36px;
+    flex-shrink: 0;
+}
+
+.chapter-card-title {
+    color: #ffaa00;
+    font-family: 'Minecraftia', sans-serif;
+    text-shadow: 1px 1px #000;
+    font-size: 16px;
+    margin: 0 0 4px 0;
+}
+
+.chapter-card-desc {
+    color: #ccc;
+    font-size: 14px;
+    margin: 0;
+}
+
+.chapter-card-count {
+    color: #aaffaa;
+    font-family: 'Minecraftia', sans-serif;
+    font-size: 11px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
