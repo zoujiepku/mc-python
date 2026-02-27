@@ -87,4 +87,41 @@
   font-size: 16px;
   white-space: pre-wrap;
   word-wrap: break-word;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+  .python-editor-container {
+    margin-bottom: 10px;
+  }
+
+  .editor-header {
+    padding: 6px 10px;
+  }
+
+  .editor-title {
+    font-size: 12px;
+  }
+
+  .run-button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .code-textarea {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .terminal-header {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+
+  .terminal-content {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
 }

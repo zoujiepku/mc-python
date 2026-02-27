@@ -108,3 +108,33 @@
         transform: translateY(0);
     }
 }
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+    .exp-bar-container {
+        height: 8px;
+    }
+
+    .exp-text {
+        font-size: 10px;
+        margin-bottom: 5px;
+    }
+
+    .lesson-card {
+        padding: 12px 14px;
+    }
+
+    .lesson-title {
+        font-size: 18px;
+    }
+
+    .lesson-content {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .mc-button {
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+}

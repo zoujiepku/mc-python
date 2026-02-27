@@ -63,3 +63,14 @@ body {
 * {
   box-sizing: border-box;
 }
+
+/* === RESPONSIVE: Small screens === */
+@media (max-width: 600px) {
+  :root {
+    font-size: 14px;
+  }
+
+  #root {
+    padding: 6px 10px;
+  }
+}
