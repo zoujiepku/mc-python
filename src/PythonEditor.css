@@ -1,0 +1,91 @@
+.python-editor-container {
+  background: var(--mc-stone);
+  border: 4px solid var(--mc-stone-dark);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  margin-bottom: 20px;
+}
+
+.editor-header {
+  background: var(--mc-stone-dark);
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 4px solid var(--mc-stone-darker);
+}
+
+.editor-title {
+  color: white;
+  font-weight: bold;
+  font-family: 'Minecraftia', 'Courier New', Courier, monospace;
+}
+
+.run-button {
+  background: var(--mc-green);
+  color: white;
+  border: 3px solid var(--mc-green-light);
+  border-bottom-color: var(--mc-green-dark);
+  border-right-color: var(--mc-green-dark);
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  transition: transform 0.1s;
+}
+
+.run-button:active {
+  transform: translateY(2px);
+  border-bottom-width: 1px;
+}
+
+.run-button:disabled {
+  background: #666;
+  border-color: #555;
+  cursor: not-allowed;
+}
+
+.code-textarea {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  border: none;
+  min-height: 100px;
+  resize: vertical;
+  outline: none;
+  line-height: 1.5;
+}
+
+.terminal-output {
+  background: #0c0c0c;
+  border-top: 4px solid var(--mc-stone-darker);
+  min-height: 60px;
+}
+
+.terminal-header {
+  background: #2d2d2d;
+  color: #aaa;
+  font-size: 18px;
+  padding: 8px 15px;
+  font-family: 'Minecraftia', sans-serif;
+  font-weight: bold;
+}
+
+.terminal-content {
+  color: #00ff00;
+  padding: 10px 15px;
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
