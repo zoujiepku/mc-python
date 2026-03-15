@@ -39,11 +39,23 @@ export const chapter4 = {
             buttonText: "Show me! 🎯"
         },
         {
+            type: 'info',
+            title: '📏 Review: Indentation!',
+            content: "Just like with if statements, for loops use Indentation!\n\nAny code with SPACES in front of it belongs to the loop, and will be repeated.\n\nfor mob in mobs:\n    print(mob)  👈 This repeats!\nprint(\"Done!\")  👈 No spaces, so it only runs once at the end.",
+            buttonText: "Makes sense! 📏"
+        },
+        {
             type: 'code',
             title: 'Your First for Loop! 🔄',
             content: 'Print every mob in the list automatically! 🧟',
             initialCode: 'mobs = ["zombie", "skeleton", "creeper", "spider"]\n\nfor mob in mobs:\n    print("Watch out for:", mob)',
             expectedOutputPattern: 'Watch out for:\\s*zombie'
+        },
+        {
+            type: 'info',
+            title: '➕ Review: Variable Math!',
+            content: "Remember variable math? Like count = count + 1?\n\nThis is super useful inside loops!\nEvery time the loop runs, we can add 1 to our count to keep track of how many times we've looped.",
+            buttonText: "Let's count! 🔢"
         },
         {
             type: 'code',
@@ -90,6 +102,26 @@ export const chapter4 = {
             content: 'Print "ha" 50 times to make a MEGA laugh! 🤣',
             initialCode: 'laugh = ""\nfor i in range(50):\n    laugh = laugh + "ha"\nprint(laugh + "!")',
             expectedOutputPattern: 'hahaha'
+        },
+        {
+            type: 'info',
+            title: '📐 Building Shapes with Loops!',
+            content: "We can use loops to build cool shapes out of text!\n\nIf we start with an empty string, and add 'TNT ' to it every time the loop runs, we can make a triangle!",
+            buttonText: "Let's build! 🏗️"
+        },
+        {
+            type: 'code',
+            title: 'TNT Triangle! 🧨',
+            content: 'Run this to build a 5-layer TNT triangle!\nThen try changing range(5) to range(7) for a bigger triangle!\nThen try changing "TNT " to "steve "! 🧑',
+            initialCode: 'row = ""\nfor i in range(5):\n    row = row + "TNT "\n    print(row)',
+            expectedOutputPattern: 'TNT TNT'
+        },
+        {
+            type: 'code',
+            title: 'The Indentation Trick! 📏',
+            content: 'What happens if we remove the spaces before `print(row)`?\nDelete the spaces and see what happens! (Hint: It only prints ONCE at the very end!)',
+            initialCode: 'row = ""\nfor i in range(5):\n    row = row + "TNT "\n\n    # Try deleting the spaces before print!\n    print(row)',
+            expectedOutputPattern: 'TNT '
         },
         {
             type: 'quiz',

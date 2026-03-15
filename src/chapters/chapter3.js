@@ -39,9 +39,15 @@ export const chapter3 = {
             buttonText: "Show me! 🎯"
         },
         {
+            type: 'info',
+            title: '📏 The Secret Rule: Indentation!',
+            content: "Before we write an if statement, you MUST know Python's secret rule:\n\nIf you want code to happen INSIDE the if, you have to put SPACES before it! (This is called Indentation).\n\nif hungry:\n    print(\"Eat!\")  👈 Notice the spaces!\n\nNo spaces = Error! 💥",
+            buttonText: "Good to know! 📏"
+        },
+        {
             type: 'code',
             title: 'Your First if! 🚦',
-            content: 'Try changing has_diamonds to False and run again! 💎',
+            content: 'Notice the spaces before the print! Try changing has_diamonds to False! 💎',
             initialCode: 'has_diamonds = True\n\nif has_diamonds:\n    print("You are RICH! 💎")',
             expectedOutputPattern: 'RICH'
         },

@@ -32,13 +32,68 @@
     font-size: 13px;
 }
 
+.step-menu-container {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.step-menu-select {
+    background: rgba(30, 30, 30, 0.8);
+    backdrop-filter: blur(4px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #e0e0e0;
+    font-family: 'Minecraftia', sans-serif;
+    font-size: 13px;
+    padding: 10px 15px;
+    padding-right: 35px;
+    /* space for arrow */
+    cursor: pointer;
+    width: 100%;
+    max-width: 450px;
+    text-align: left;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 10px);
+    background-position-y: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+}
+
+.step-menu-select:hover {
+    background: rgba(50, 50, 50, 0.9);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.step-menu-select:focus {
+    outline: none;
+    border-color: #ffcc00;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
+}
+
+.step-menu-select option {
+    background: #2a2a2a;
+    color: #fff;
+    /* Use a readable sans-serif font for dropdown options, some OS struggle with custom fonts in native select options */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
 .lesson-card {
     width: 100%;
-    background: rgba(40, 40, 40, 0.9);
-    border: 4px solid var(--mc-stone-light);
-    border-radius: 8px;
-    padding: 20px 25px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    background: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    padding: 24px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     animation: slideUp 0.5s ease;
 }
 
@@ -50,43 +105,57 @@
 }
 
 .lesson-title {
-    color: #ffaa00;
-    /* Gold color */
+    color: #ffcc00;
     font-family: 'Minecraftia', sans-serif;
-    text-shadow: 2px 2px #000;
+    text-shadow: 2px 2px 0px #000, 0 4px 8px rgba(0, 0, 0, 0.5);
     margin-top: 0;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     text-align: center;
     font-size: 24px;
+    letter-spacing: 0.5px;
 }
 
 .lesson-content {
-    color: white;
+    color: #f0f0f0;
     font-size: 18px;
-    line-height: 1.5;
+    line-height: 1.6;
     margin-top: 0;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     white-space: pre-wrap;
     text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .mc-button {
-    background: var(--mc-wood);
+    background: linear-gradient(180deg, var(--mc-wood-light) 0%, var(--mc-wood-dark) 100%);
     color: white;
-    border: 4px solid var(--mc-wood-light);
-    border-bottom-color: var(--mc-wood-dark);
-    border-right-color: var(--mc-wood-dark);
-    padding: 10px 20px;
-    font-size: 18px;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 4px solid #3d2413;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
     font-family: 'Minecraftia', sans-serif;
     cursor: pointer;
     align-self: center;
-    transition: transform 0.1s;
+    margin-top: 5px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.15s ease;
+    text-shadow: 1px 1px 0px #000;
+}
+
+.mc-button:hover {
+    background: linear-gradient(180deg, var(--mc-wood) 0%, #4a2f1a 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 .mc-button:active {
-    transform: translateY(2px);
-    border-bottom-width: 2px;
+    transform: translateY(3px);
+    border-bottom-width: 1px;
+    margin-top: 8px;
+    /* Offset the 3px transform + 3px lost border */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .hint-text {
@@ -118,6 +187,12 @@
     .exp-text {
         font-size: 10px;
         margin-bottom: 5px;
+    }
+
+    .step-menu-select {
+        font-size: 11px;
+        padding: 8px 12px;
+        padding-right: 30px;
     }
 
     .lesson-card {

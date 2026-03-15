@@ -1,7 +1,66 @@
-import { chapter1 } from './chapter1';
-import { chapter2 } from './chapter2';
-import { chapter3 } from './chapter3';
-import { chapter4 } from './chapter4';
-import { chapter5 } from './chapter5';
-
-export const chapters = [chapter1, chapter2, chapter3, chapter4, chapter5];
+export const chapterManifest = [
+  {
+    id: 'chapter1',
+    title: 'Chapter 1: The Magic Command Block',
+    description: 'Learn print, big numbers, variables, and strings! 🪄',
+    emoji: '⛏️',
+    lessonCount: 17,
+    load: () => import('./chapter1').then((m) => m.chapter1),
+  },
+  {
+    id: 'chapter2',
+    title: 'Chapter 2: Lists, Booleans & Comparisons',
+    description: 'Master lists, True/False, and comparison operators! 📋',
+    emoji: '📋',
+    lessonCount: 29,
+    load: () => import('./chapter2').then((m) => m.chapter2),
+  },
+  {
+    id: 'chapter3',
+    title: 'Chapter 3: Decisions & Math',
+    description: 'If/else logic and all the math operators! 🧠',
+    emoji: '🧠',
+    lessonCount: 27,
+    load: () => import('./chapter3').then((m) => m.chapter3),
+  },
+  {
+    id: 'chapter4',
+    title: 'Chapter 4: Loops & Conversions',
+    description: 'For loops, range(), and converting between types! 🔄',
+    emoji: '🔄',
+    lessonCount: 28,
+    load: () => import('./chapter4').then((m) => m.chapter4),
+  },
+  {
+    id: 'chapter5',
+    title: 'Chapter 5: While Loops & Boolean Logic',
+    description: 'While loops, and/or operators, and combining them! 🔁',
+    emoji: '🔁',
+    lessonCount: 24,
+    load: () => import('./chapter5').then((m) => m.chapter5),
+  },
+  {
+    id: 'chapter6',
+    title: 'Chapter 6: Dictionaries & Inventories',
+    description: 'Use key/value pairs to store item counts and stats! 🧰',
+    emoji: '🧰',
+    lessonCount: 19,
+    load: () => import('./chapter6').then((m) => m.chapter6),
+  },
+  {
+    id: 'chapter7',
+    title: 'Chapter 7: Randomness & Loot',
+    description: 'Roll dice, pick random mobs, and build loot tables! 🎲',
+    emoji: '🎲',
+    lessonCount: 20,
+    load: () => import('./chapter7').then((m) => m.chapter7),
+  },
+  {
+    id: 'chapter8',
+    title: 'Chapter 8: Functions & Decorators',
+    description: 'Build reusable spells with functions and power-ups with decorators! ✨',
+    emoji: '🧩',
+    lessonCount: 13,
+    load: () => import('./chapter8').then((m) => m.chapter8),
+  },
+];

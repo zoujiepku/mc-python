@@ -54,12 +54,25 @@ export const chapter1 = {
             expectedOutputPattern: 'Total treasures:\\s*1050'
         },
         {
+            type: 'info',
+            title: '➕ Changing Variables!',
+            content: 'Here is a super cool trick: you can change a variable using math!\n\nIf we have 10 diamonds, and we find 5 more, we can write:\ndiamonds = diamonds + 5\n\nIt updates the inventory! 🎒',
+            buttonText: "Let me try! ➕"
+        },
+        {
+            type: 'code',
+            title: 'Variable Math 🧮',
+            content: 'Add 50 to your creepers score! 💥',
+            initialCode: 'creepers = 100\nprint("Started with:", creepers)\n\n# Let\'s add 50 more!\ncreepers = creepers + 50\nprint("Now we have:", creepers)',
+            expectedOutputPattern: 'Now we have:\\s*150'
+        },
+        {
             type: 'quiz',
-            question: 'If we write `creepers = 100` and then `creepers = creepers + 50`, what is `creepers` now? 💣',
+            question: 'If we write `x = 10` and then `x = x + 1`, what is `x` now? ➕',
             options: [
-                '💥 100',
-                '🎯 150',
-                '🤷 creepers'
+                '💥 10',
+                '🎯 11',
+                '🤷 x'
             ],
             correctAnswerIndex: 1
         },

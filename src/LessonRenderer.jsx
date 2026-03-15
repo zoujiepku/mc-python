@@ -41,6 +41,13 @@ export const LessonRenderer = ({ chapter, onBack }) => {
     };
 
     const step = lessons[currentStep];
+    const getDisplayContent = (stepData) => {
+        if (!stepData?.content) return '';
+        if (stepData.type !== 'code') return stepData.content;
+        const firstParagraph = stepData.content.split(/\n\s*\n/)[0];
+        return firstParagraph.trim();
+    };
+    const displayContent = getDisplayContent(step);
     const progress = ((currentStep) / (lessons.length - 1)) * 100;
 
     return (
@@ -50,11 +57,35 @@ export const LessonRenderer = ({ chapter, onBack }) => {
             </div>
             <div className="exp-text">XP Level {currentStep}</div>
 
+            <div className="step-menu-container">
+                <select
+                    className="step-menu-select"
+                    value={currentStep}
+                    onChange={(e) => {
+                        setCurrentStep(Number(e.target.value));
+                        setStepCompleted(false);
+                        setResetKey((k) => k + 1);
+                    }}
+                >
+                    {lessons.map((step, index) => {
+                        let label = step.title;
+                        if (!label && step.type === 'quiz') label = "Quiz Time! 🤔";
+                        if (!label) label = `Step ${index + 1}`;
+
+                        return (
+                            <option key={index} value={index}>
+                                {index + 1}. {label}
+                            </option>
+                        );
+                    })}
+                </select>
+            </div>
+
             <div className="lesson-card">
                 {step.type === 'info' && (
                     <div className="info-section">
                         <h2 className="lesson-title">{step.title}</h2>
-                        <p className="lesson-content">{step.content}</p>
+                        {displayContent && <p className="lesson-content">{displayContent}</p>}
                         <button className="mc-button" onClick={nextStep}>{step.buttonText}</button>
                     </div>
                 )}
@@ -62,7 +93,7 @@ export const LessonRenderer = ({ chapter, onBack }) => {
                 {step.type === 'code' && (
                     <div className="code-section">
                         <h2 className="lesson-title">{step.title}</h2>
-                        <p className="lesson-content">{step.content}</p>
+                        {displayContent && <p className="lesson-content">{displayContent}</p>}
                         <PythonEditor
                             key={`${currentStep}-${resetKey}`}
                             initialCode={step.initialCode}
@@ -73,8 +104,8 @@ export const LessonRenderer = ({ chapter, onBack }) => {
                                 <p style={{ color: '#55ff55', fontWeight: 'bold', fontSize: '16px', marginBottom: '5px', fontFamily: '"Minecraftia", sans-serif' }}>🎉 Great job! The code worked!</p>
                                 <p style={{ color: '#aaaaaa', fontStyle: 'italic', marginBottom: '10px', fontSize: '13px' }}>You can keep editing and experimenting!</p>
                                 <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
-                                    <button className="mc-button" onClick={resetCode}>Try Again 🔄</button>
                                     <button className="mc-button" onClick={prevStep} disabled={currentStep === 0}>Previous Level ⬅️</button>
+                                    <button className="mc-button" onClick={resetCode}>Try Again 🔄</button>
                                     <button className="mc-button" onClick={nextStep}>Next Level ➡️</button>
                                 </div>
                             </div>

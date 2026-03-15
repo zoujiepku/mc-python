@@ -1,5 +1,5 @@
 import React from 'react';
-import { chapters } from './chapters';
+import { chapterManifest } from './chapters';
 import './ChapterSelect.css';
 
 export const ChapterSelect = ({ onSelectChapter }) => {
@@ -8,7 +8,7 @@ export const ChapterSelect = ({ onSelectChapter }) => {
             <h2 className="chapter-select-title">📚 Choose Your Adventure!</h2>
             <p className="chapter-select-subtitle">Pick a chapter to start learning Python! 🐍</p>
             <div className="chapter-grid">
-                {chapters.map((chapter, index) => (
+                {chapterManifest.map((chapter, index) => (
                     <button
                         key={chapter.id}
                         className="chapter-card"
@@ -17,7 +17,7 @@ export const ChapterSelect = ({ onSelectChapter }) => {
                         <span className="chapter-emoji">{chapter.emoji}</span>
                         <h3 className="chapter-card-title">{chapter.title}</h3>
                         <p className="chapter-card-desc">{chapter.description}</p>
-                        <span className="chapter-card-count">{chapter.lessons.length} steps</span>
+                        <span className="chapter-card-count">{chapter.lessonCount ?? chapter.lessons?.length ?? 0} steps</span>
                     </button>
                 ))}
             </div>
