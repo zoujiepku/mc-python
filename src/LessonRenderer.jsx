@@ -55,8 +55,6 @@ export const LessonRenderer = ({ chapter, onBack }) => {
             <div className="exp-bar-container">
                 <div className="exp-bar-fill" style={{ width: `${progress}%` }}></div>
             </div>
-            <div className="exp-text">XP Level {currentStep}</div>
-
             <div className="step-menu-container">
                 <select
                     className="step-menu-select"
